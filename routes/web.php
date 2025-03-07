@@ -9,4 +9,4 @@ Route::get('/', function () {
 });
 
 // Rutas para GenderController
-Route::resource('genders', GenderController::class);
+Route::resource('genders', GenderController::class,'index' );
