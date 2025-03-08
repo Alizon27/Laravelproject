@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             GenderSeeder::class,
             UniverseSeeder::class, // Asegúrate de agregar esta línea
         ]);
+        superheroes::factory(100)->create();
     }
 }
 

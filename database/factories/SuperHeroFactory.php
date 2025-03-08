@@ -15,9 +15,12 @@ class UniverseFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word(), // Genera un nombre aleatorio
-            'created_at' => now(),
-            'updated_at' => now(),
+           
+            'universe_id'=> fake()->numberBetween(1, 2),,
+            'gender:id'=> fake()->numberBetween(1, 3),
+            'name'=> fake()->name(),
+            'real_name'=> fake()->userName(),
+            'picture'=> fake()->imageUrl(640, 480 'superheroes'),
         ];
     }
 }
