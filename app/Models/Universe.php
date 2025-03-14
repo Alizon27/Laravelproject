@@ -9,5 +9,5 @@ class Universe extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name']; // Agrega los campos que quieres permitir
+    protected $fillable = ['name']; // Permite la asignación masiva del campo 'name'
 }

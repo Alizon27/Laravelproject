@@ -2,25 +2,20 @@
 
 namespace Database\Factories;
 
+use App\Models\Superhero;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Universe;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Universe>
- */
-class UniverseFactory extends Factory
+class SuperheroFactory extends Factory
 {
-    protected $model = Universe::class;
+    protected $model = Superhero::class;
 
-    public function definition(): array
+    public function definition()
     {
         return [
-           
-            'universe_id'=> fake()->numberBetween(1, 2),,
-            'gender:id'=> fake()->numberBetween(1, 3),
-            'name'=> fake()->name(),
-            'real_name'=> fake()->userName(),
-            'picture'=> fake()->imageUrl(640, 480 'superheroes'),
+            'name' => $this->faker->name(),
+            'power' => $this->faker->word(),
+            'universe_id' => \App\Models\Universe::factory(),  // Si tienes una relación con Universe
         ];
     }
 }
+
