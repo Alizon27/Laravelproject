@@ -8,6 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Universe extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['name']; // Permite la asignación masiva del campo 'name'
+    protected $fillable = ['name'];
 }

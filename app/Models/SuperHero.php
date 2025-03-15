@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory; // Asegúrate de importar esto
 
-class SuperHero extends Model
+class Superhero extends Model
 {
-    use HasFactory; // Esto habilita el uso de la fábrica en el modelo
+    use HasFactory;
+    protected $fillable = ['name', 'alias', 'power', 'universe_id'];
 
-    protected $table = "superheroes_t"; // Nombre de la tabla si es diferente a 'super_heroes'
+    public function universe()
+    {
+        return $this->belongsTo(Universe::class);
+    }
 }
 
