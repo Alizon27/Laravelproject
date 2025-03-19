@@ -9,10 +9,11 @@ class Universe extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     public function superheroes()
     {
-        return $this->hasMany(Superhero::class);
+        return $this->hasMany(SuperHero::class);
     }
 }
+

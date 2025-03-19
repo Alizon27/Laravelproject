@@ -9,16 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('superheroes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');  // Nombre del superhéroe
-            $table->foreignId('gender_id')->constrained('genders');  // Relación con genders
-            $table->foreignId('universe_id')->constrained('universes');  // Relación con universes
-            $table->timestamps();
-        });
-    }
+    public function up()
+{
+    Schema::create('super_heroes', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('power');
+        $table->foreignId('universe_id')->constrained()->onDelete('cascade');
+        $table->string('gender');
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.

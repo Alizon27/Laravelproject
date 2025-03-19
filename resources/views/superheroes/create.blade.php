@@ -1,31 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Crear Superhéroe</h1>
-        <form action="{{ route('superheroes.store') }}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="name" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            
-            <div class="mb-3">
-                <label for="power" class="form-label">Poder:</label>
-                <input type="text" class="form-control" id="power" name="power" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="universe_id" class="form-label">Universo:</label>
-                <select class="form-control" id="universe_id" name="universe_id" required>
-                    @foreach($universes as $universe)
-                        <option value="{{ $universe->id }}">{{ $universe->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-success">Guardar</button>
-            <a href="{{ route('superheroes.index') }}" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
+<h1>{{ isset($superhero) ? 'Editar Superhéroe' : 'Crear Superhéroe' }}</h1>
+<form action="{{ isset($superhero) ? route('superheroes.update', $superhero) : route('superheroes.store') }}" method="POST">
+    @csrf
+    @if(isset($superhero))
+        @method('PUT')
+    @endif
+    <input type="text" name="name" value="{{ old('name', $superhero->name ?? '') }}" placeholder="Nombre">
+    <input type="text" name="power" value="{{ old('power', $superhero->power ?? '') }}" placeholder="Poder">
+    <select name="universe_id">
+        @foreach($universes as $universe)
+            <option value="{{ $universe->id }}" {{ (isset($superhero) && $superhero->universe_id == $universe->id) ? 'selected' : '' }}>
+                {{ $universe->name }}
+            </option>
+        @endforeach
+    </select>
+    <input type="text" name="gender" value="{{ old('gender', $superhero->gender ?? '') }}" placeholder="Género">
+    <button type="submit">Guardar</button>
+</form>
 @endsection
+
