@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Superhero extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'alias', 'power', 'universe_id'];
+
+    protected $fillable = [
+        'name',
+        'power',
+        'universe_id',
+    ];
 
     public function universe()
     {
         return $this->belongsTo(Universe::class);
     }
 }
+
 

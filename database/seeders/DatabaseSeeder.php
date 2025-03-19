@@ -3,23 +3,17 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\SuperHero; // Asegúrate de importar la clase SuperHero
-use Database\Seeders\GenderSeeder;
-use Database\Seeders\UniverseSeeder;
-use Database\Seeders\SuperheroesSeeder;
+use App\Models\Universe;
+use App\Models\Superhero;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call([
-            GenderSeeder::class,
-            UniverseSeeder::class,
-            SuperheroesSeeder::class, // Referencia al seeder correctamente
-        ]);
-
-        // Luego llama a la fábrica si lo necesitas
-        SuperHero::factory(100)->create(); // Usar el modelo correcto
+        Universe::factory(5)->create()->each(function ($universe) {
+            Superhero::factory(3)->create(['universe_id' => $universe->id]);
+        });
     }
 }
+
 

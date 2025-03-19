@@ -2,21 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Universe;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Universe; // Asegúrate de importar el modelo
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Universe>
- */
 class UniverseFactory extends Factory
 {
-    protected $model = Universe::class; // Asocia la fábrica con el modelo Universe
+    protected $model = Universe::class;
 
-    public function definition(): array
+    public function definition()
     {
         return [
-            'name' => $this->faker->word(), // Genera un nombre ficticio para el universo
+            'name' => $this->faker->word(),
         ];
     }
 }
+
 

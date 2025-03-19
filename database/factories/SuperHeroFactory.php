@@ -13,9 +13,9 @@ class SuperheroFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'power' => $this->faker->word(),
-            'universe_id' => \App\Models\Universe::factory(),  // Si tienes una relación con Universe
+            'universe_id' => \App\Models\Universe::factory(),
         ];
     }
 }
+
 
